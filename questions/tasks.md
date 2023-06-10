@@ -16,6 +16,8 @@ function isPalindrome(str) {
 ```
 </details>
 
+***
+
 <details>
 <summary>Проверка самого кроткого слова</summary>
 
@@ -33,6 +35,8 @@ function findShort(str){
 }
 ```
 </details>
+
+***
 
 <details>
 <summary>Создать инициалы</summary>
@@ -52,6 +56,8 @@ function abbrevName(name){
 ```
 </details>
 
+***
+
 <details>
 <summary>Суммирование всех чисел числа</summary>
 
@@ -68,5 +74,22 @@ function sumDigits(number) {
 }
 ```
 </details>
+
+***
+
+<details>
+<summary>Поиск минимального и максимального значений в массиве</summary>
+
+[Codewars - 8 kyu Find Maximum and Minimum Values of a List](https://www.codewars.com/kata/577a98a6ae28071780000989/train/javascript)
+
+```js
+const min = (list) => Math.min(...list);
+const max = (list) => Math.max(...list);
+```
+</details>
+
+***
+
+
 
 
