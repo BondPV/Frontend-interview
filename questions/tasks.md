@@ -1,6 +1,52 @@
 ## Практические задачи:
 
 <details>
+<summary>Повторный Fetch запрос</summary>
+
+Напишите функцию, которая будет повторять запрос до тех пор, пока он не выполнится успешно или не будет достигнуто максимальное количество попыток.  
+
+```js
+async function makeRequest(url, maxRetries, delay) {
+  try {
+    const response = await fetch(url);
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw new Error(Request failed with status ${response.status});
+    }
+  } catch (error) {
+    if (maxRetries > 0) {
+      await new Promise(resolve => setTimeout(resolve, delay));
+      return makeRequest(url, maxRetries - 1, delay);
+    } else {
+      throw error;
+    }
+  }
+}
+
+// url - адрес, по которому нужно выполнить запрос;
+// maxRetries - максимальное количество попыток выполнения запроса;
+// delay - задержка между попытками выполнения запроса (в миллисекундах).
+
+Вот пример использования этой функции:
+
+const url = 'https://example.com/data';
+const maxRetries = 3;
+const delay = 1000;
+
+try {
+  const data = await makeRequest(url, maxRetries, delay);
+  console.log(data);
+} catch (error) {
+  console.error(error);
+}
+```
+
+***
+
+</details>
+
+<details>
 <summary>Проверка пар скобок</summary>
 
 [Codewars - 7 kyu Valid Parentheses](https://www.codewars.com/kata/6411b91a5e71b915d237332d/javascript)
