@@ -3,6 +3,8 @@
 <details>
 <summary>Повторный Fetch запрос</summary>
 
+***
+
 Напишите функцию, которая будет повторять запрос до тех пор, пока он не выполнится успешно или не будет достигнуто максимальное количество попыток.  
 
 ```js
@@ -49,6 +51,8 @@ try {
 <details>
 <summary>Проверка пар скобок</summary>
 
+***
+
 [Codewars - 7 kyu Valid Parentheses](https://www.codewars.com/kata/6411b91a5e71b915d237332d/javascript)
 
 Напишите функцию, которая принимает строку скобок и определяет, допустим ли порядок скобок. Функция должна возвращать true, если строка допустима, и false, если она недействительна.  
@@ -85,6 +89,8 @@ function validParentheses(str) {
 <details>
 <summary>Проверка палиндрома</summary>
 
+***
+
 [Codewars - 8 kyu Is it a palindrome?](https://www.codewars.com/kata/57a1fd2ce298a731b20006a4)
 
 Напишите функцию, которая принимает на вход строку и возвращает true, если она является палиндромом (читается одинаково слева направо и справа налево), и false в противном случае.  
@@ -103,6 +109,8 @@ function isPalindrome(str) {
 
 <details>
 <summary>Проверка самого кроткого слова</summary>
+
+***
 
 [Codewars - 7 kyu Shortest Word](https://www.codewars.com/kata/57cebe1dc6fdc20c57000ac9/javascript)
 
@@ -125,6 +133,8 @@ function findShort(str){
 <details>
 <summary>Создать инициалы</summary>
 
+***
+
 [Codewars - 8 kyu Abbreviate a Two Word Name](https://www.codewars.com/kata/57eadb7ecd143f4c9c0000a3)
 
 Напишите функцию для преобразования имени в инициалы. Имя состоит из двух слов с одним пробелом между ними.  
@@ -146,6 +156,8 @@ function abbrevName(name){
 <details>
 <summary>Суммирование всех чисел числа</summary>
 
+***
+
 [Codewars - 7 kyu Summing a number's digits](https://www.codewars.com/kata/52f3149496de55aded000410/javascript)
 
 Напишите функцию, которая принимает число и возвращает сумму абсолютного значения каждой из десятичных цифр числа.  
@@ -165,6 +177,8 @@ function sumDigits(number) {
 
 <details>
 <summary>Поиск минимального и максимального значений в массиве</summary>
+
+***
 
 [Codewars - 8 kyu Find Maximum and Minimum Values of a List](https://www.codewars.com/kata/577a98a6ae28071780000989/train/javascript)
 
