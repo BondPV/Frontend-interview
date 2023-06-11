@@ -3,7 +3,9 @@
 <details>
 <summary>Повторный Fetch запрос</summary>
 
-#### Напишите функцию, которая будет повторять запрос до тех пор, пока он не выполнится успешно или не будет достигнуто максимальное количество попыток.  
+***
+
+Напишите функцию, которая будет повторять запрос до тех пор, пока он не выполнится успешно или не будет достигнуто максимальное количество попыток.  
 
 ```js
 async function makeRequest(url, maxRetries, delay) {
@@ -39,6 +41,31 @@ try {
   console.log(data);
 } catch (error) {
   console.error(error);
+}
+```
+
+***
+
+</details>
+
+<details>
+<summary>Реализация debounce</summary>
+
+***
+
+Функция debounce используется для отложенного выполнения функции, чтобы избежать частых и ненужных вызовов. Она принимает функцию и время задержки в миллисекундах, и возвращает новую функцию, которая будет вызывать переданную функцию только после того, как прошло указанное время без вызовов.  
+
+```js
+function debounce(func, delay) {
+  let isCooldown = false;
+
+  return function() {
+    if (isCooldown) return;
+
+    func.apply(this, arguments);
+    isCooldown = true;
+    setTimeout(() => isCooldown = false, delay);
+  };
 }
 ```
 
