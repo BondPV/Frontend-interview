@@ -1,6 +1,42 @@
 ## Практические задачи:
 
 <details>
+<summary>Проверка пар скобок</summary>
+
+[Codewars - 7 kyu Valid Parentheses](https://www.codewars.com/kata/6411b91a5e71b915d237332d/javascript)
+
+Напишите функцию, которая принимает строку скобок и определяет, допустим ли порядок скобок. Функция должна возвращать true, если строка допустима, и false, если она недействительна.  
+
+```js
+function validParentheses(str) {
+  const stack = [];
+  const openBrackets = ['(', '[', '{'];
+  const closeBrackets = [')', ']', '}'];
+
+  for (let i = 0; i < str.length; i++) {
+    const bracket = str[i];
+    
+    if (openBrackets.includes(bracket)) {
+      stack.push(bracket);
+    } else if (closeBrackets.includes(bracket)) {
+      const lastOpenBracket = stack.pop();
+      const correspondingOpenBracket = openBrackets[closeBrackets.indexOf(bracket)];
+      
+      if (lastOpenBracket !== correspondingOpenBracket) {
+        return false;
+      }
+    }
+  }
+
+  return stack.length === 0;
+}
+```
+
+***
+
+</details>
+
+<details>
 <summary>Проверка палиндрома</summary>
 
 [Codewars - 8 kyu Is it a palindrome?](https://www.codewars.com/kata/57a1fd2ce298a731b20006a4)
@@ -14,9 +50,10 @@ function isPalindrome(str) {
   return str.toLowerCase() === reversedStr.toLowerCase();
 }
 ```
-</details>
 
 ***
+
+</details>
 
 <details>
 <summary>Проверка самого кроткого слова</summary>
@@ -34,9 +71,10 @@ function findShort(str){
     .length;
 }
 ```
-</details>
 
 ***
+
+</details>
 
 <details>
 <summary>Создать инициалы</summary>
@@ -54,9 +92,10 @@ function abbrevName(name){
       .join('.')
 }
 ```
-</details>
 
 ***
+
+</details>
 
 <details>
 <summary>Суммирование всех чисел числа</summary>
@@ -73,9 +112,10 @@ function sumDigits(number) {
     .reduce((acc, num) => +acc + +num, 0);
 }
 ```
-</details>
 
 ***
+
+</details>
 
 <details>
 <summary>Поиск минимального и максимального значений в массиве</summary>
@@ -86,9 +126,10 @@ function sumDigits(number) {
 const min = (list) => Math.min(...list);
 const max = (list) => Math.max(...list);
 ```
-</details>
 
 ***
+
+</details>
 
 
 
