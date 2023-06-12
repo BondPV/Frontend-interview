@@ -185,7 +185,7 @@ function isPalindrome(str) {
 
 ***
 
-[Codewars - 7 kyu Anagram Detection](ttps://www.codewars.com/kata/529eef7a9194e0cbc1000255/javascript)
+[Codewars - 7 kyu Anagram Detection](https://www.codewars.com/kata/529eef7a9194e0cbc1000255/javascript)
 
 Анаграмма - это слово или фраза, образованная путем перестановки букв другого слова или фразы. Для определения анаграммы необходимо проверить, содержат ли две строки одинаковые наборы символов.  
 
@@ -205,6 +205,50 @@ function isAnagram(str1, str2) {
   } else {
     return false;
   }
+}
+```
+
+***
+
+</details>
+
+<details>
+<summary>Проверка изограммы (слова, в которых нет повторяющихся букв)</summary>
+
+***
+
+[Codewars - 7 kyu Isograms](https://www.codewars.com/kata/54ba84be607a92aa900000f1/javascript)
+
+Изограмма - это слово или фраза, в которой каждая буква встречается только один раз. Для определения изограммы необходимо проверить, содержит ли строка только уникальные символы.  
+
+```js
+function isIsogram(str) {
+  str = str.toLowerCase();
+  const charCount = {};
+
+  for (let i = 0; i < str.length; i++) {
+    const char = str[i];
+
+    // Если символ уже встречался в строке, то это не изограмма
+    if (charCount[char]) {
+      return false;
+    }
+
+    // Добавляем символ в объект charCount
+    charCount[char] = 1;
+  }
+
+  // Если все символы уникальны, то это изограмма
+  return true;
+}
+```
+
+```js
+function isIsogram(str){
+  const newStr = str.toUpperCase();
+  const charsSet= new Set(newStr);
+  
+  return charsSet.size === newStr.length;
 }
 ```
 
