@@ -181,6 +181,38 @@ function isPalindrome(str) {
 </details>
 
 <details>
+<summary>Проверка анаграммы</summary>
+
+***
+
+[Codewars - 7 kyu Anagram Detection](ttps://www.codewars.com/kata/529eef7a9194e0cbc1000255/javascript)
+
+Анаграмма - это слово или фраза, образованная путем перестановки букв другого слова или фразы. Для определения анаграммы необходимо проверить, содержат ли две строки одинаковые наборы символов.  
+
+```js
+function isAnagram(str1, str2) {
+  // Удаляем пробелы и приводим строки к нижнему регистру
+  str1 = str1.replace(/s/g, '').toLowerCase();
+  str2 = str2.replace(/s/g, '').toLowerCase();
+
+  // Сортируем символы в строках
+  const str1Sorted = str1.split('').sort().join('');
+  const str2Sorted = str2.split('').sort().join('');
+
+  // Сравниваем отсортированные строки
+  if (str1Sorted === str2Sorted) {
+    return true;
+  } else {
+    return false;
+  }
+}
+```
+
+***
+
+</details>
+
+<details>
 <summary>Проверка самого кроткого слова</summary>
 
 ***
