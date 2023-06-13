@@ -355,6 +355,95 @@ const max = (list) => Math.max(...list);
 
 </details>
 
+<details>
+<summary>Найти наибольший и наименьший элемент в массиве, не используя Math.max и Math.min</summary>
+
+***
+
+```js
+function findMinMax(arr) {
+  let min = arr[0];
+  let max = arr[0];
+
+  for (let i = 1; i < arr.length; i++) {
+    const item = arr[i]
+
+    if (item < min) {
+      min = item;
+    } else if (item > max) {
+      max = item;
+    }
+  }
+
+  return { min, max };
+}
+```
+
+***
+
+</details>
+
+<details>
+<summary>Обработка данных в массиве определенным образом с решением O(n).</summary>
+
+***
+
+```js
+// Необходимо обработать массив таким образом, чтобы распределить людей по группам городов
+
+// Данные на вход
+const people = [
+  {
+    name: 'Alex',
+    city: 'Moscow',
+  },
+  {
+    name: 'Ivan',
+    city: 'Moscow',
+  },
+  {
+    name: 'Joe',
+    city: 'New York'
+  },
+  {
+    name: 'Johan',
+    city: 'Berlin'
+  },
+]
+
+const groupByCity = (array) => {}
+
+// Данные на выход
+{
+  'Moscow': [ 'Alex', 'Ivan' ],
+  'New York': 'Joe',
+  'Berlin': 'Johan'
+}
+```
+```js
+const groupByCity = (array) => {
+  const result = {}
+
+  for (const item of array) {
+    const { city, name } = item
+
+    if (!result[city]) {
+      result[city] = name
+    } else if(Array.isArray(result[city])) {
+      result[city].push(name)
+    } else {
+      result[city] = [result[city], name]
+    }
+  }
+
+  return result
+}
+```
+
+***
+
+</details>
+
 
 
 
