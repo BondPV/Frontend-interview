@@ -449,6 +449,9 @@ const groupByCity = (array) => {
 
 ***
 
+[leetcode - 56. Merge Intervals](https://leetcode.com/problems/merge-intervals/)
+[Подробный разбор решения](https://www.youtube.com/watch?v=2Od3MV1-mpk)
+
 ```js
 const array1 = [[1, 3], [2, 6], [8, 10], [15, 18]]; // [[1, 6], [8, 10], [15, 18]]
 const array2 = [[1, 4], [4, 5]]; // [[1, 5]]
