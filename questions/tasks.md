@@ -620,6 +620,62 @@ const addLevels = (obj) => {
 
 </details>
 
+<details>
+<summary>flattenObject(obj) написать функцию</summary>
+
+***
+
+Задача: Напишите функцию flattenObject(obj), которая принимает в качестве аргумента вложенный объект obj и возвращает новый объект, 
+в котором все свойства объекта obj "разглажены" (преобразованы в одноуровневую структуру), с использованием точечной нотации
+для представления иерархии свойств.
+
+
+```js
+const obj = {
+  a: {
+    b: {
+      c: 1,
+      d: 2
+    },
+    e: 3
+  },
+  f: 4
+};
+
+const flattenObject = (obj) => {}
+
+const flattenedObj = flattenObject(obj);
+// Ожидаемый результат: { 'a.b.c': 1, 'a.b.d': 2, 'a.e': 3, 'f': 4 } || { "f": 4, "a.e": 3, "a.b.c": 1, "a.b.d": 2 }
+```
+
+```js
+const flattenObject = (obj) => {
+  const flattened = {};
+  const stack = [];
+  
+  stack.push({ obj, prefix: '' });
+  
+  while (stack.length > 0) {
+    const { obj, prefix } = stack.pop();
+    
+    for (let key in obj) {
+      const value = obj[key];
+      const newKey = prefix + key;
+      
+      if (typeof value === 'object' && value !== null) {
+        stack.push({ obj: value, prefix: newKey + '.' });
+      } else {
+        flattened[newKey] = value;
+      }
+    }
+  }
+  
+  return flattened;
+}
+```
+***
+
+</details>
 
 
 
