@@ -513,6 +513,113 @@ const fizzBuzz = (n) => {
 
 </details>
 
+<details>
+<summary>Подсчет гласных подстрок строки</summary>
+
+***
+[leetcode - 2062. Count Vowel Substrings of a String](https://leetcode.com/problems/count-vowel-substrings-of-a-string/)  
+
+Подстрока — это непрерывная (непустая) последовательность символов в строке.
+
+```js
+function countVowelSubstrings(word) {
+  const vowels = ['a', 'e', 'i', 'o', 'u'];
+  let count = 0;
+  
+  // Перебираем все подстроки
+  for (let i = 0; i < word.length; i++) {
+    for (let j = i + 4; j < word.length; j++) {
+      const substring = word.substring(i, j + 1);
+      const substringVowels = substring.split('').filter(char => vowels.includes(char));
+      
+      // Проверяем, является ли подстрока гласной и содержит все 5 гласных
+      if (substringVowels.length === substring.length && vowels.every(vowel => substringVowels.includes(vowel))) {
+        count++;
+      }
+    }
+  }
+  
+  return count;
+}
+```
+
+***
+
+</details>
+
+<details>
+<summary>Преобразование объекта (добавление level)</summary>
+
+***
+
+```json
+// Объект на вход
+const object = {
+  a: {
+    d: {
+      h: 4
+    },
+    e: 2
+  },
+  b: 1,
+  c: {
+    f: {
+      g: 3,
+      k: {}
+    }
+  }
+};
+
+const addLevels = (obj) => {}
+
+// Данные на выход
+/*
+updatedObject {
+  a: { d: { h: 4, level: 2 }, e: 2, level: 1 },
+  b: 1,
+  c: { f: { g: 3, k: [Object], level: 2 }, level: 1 },
+  level: 0
+}*/
+```
+
+```js
+const addLevels = (obj) => {
+  const stack = [{obj, level: 0}];
+
+  while (stack.length > 0) {
+    const {obj, level} = stack.pop();
+    obj.level = level;
+
+    for (let key in obj) {
+      if (typeof obj[key] === 'object') {
+        stack.push({obj: obj[key], level: level + 1});
+      }
+    }
+  }
+
+  return obj;
+};
+
+// Вариант 2. рекурсия
+const addLevels = (obj) => {
+  const updatedObject = (obj, level = 0) => {
+    obj.level = level;
+    for (let key in obj) {
+      if (typeof obj[key] === 'object') {
+        updatedObject(obj[key], level + 1);
+      }
+    }
+    return obj;
+  }
+
+  return updatedObject(obj);
+};
+```
+
+***
+
+</details>
+
 
 
 
