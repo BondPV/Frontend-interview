@@ -170,9 +170,9 @@ function validParentheses(str) {
 
 ```js
 function isPalindrome(str) {
-  const reversedStr = 
-    str.split('').reverse().join('');
-  return str.toLowerCase() === reversedStr.toLowerCase();
+  str = str.toLowerCase();
+
+  return str === str.split('').reverse().join('');
 }
 ```
 [leetcode - 125. Valid Palindrome](https://leetcode.com/problems/valid-palindrome/)
@@ -180,8 +180,10 @@ function isPalindrome(str) {
 ```js
 function isPalindrome(s) {
   s = s.toLowerCase().replace(/[^a-z0-9]/g, '');
+
+  const centerStr = Math.floor(s.length / 2)
   
-  for (let i = 0; i < s.length / 2; i++) {
+  for (let i = 0; i < centerStr; i++) {
     if (s[i] !== s[s.length - 1 - i]) {
       return false;
     }
