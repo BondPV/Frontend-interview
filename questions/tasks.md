@@ -621,6 +621,61 @@ const addLevels = (obj) => {
 </details>
 
 <details>
+<summary>Вычисление чисел Фиббоначи</summary>
+
+***
+
+[leetcode - 509. Fibonacci Number](https://leetcode.com/problems/fibonacci-number/)  
+
+```
+Реализовать рекурсивную функцию для вычисления чисел Фибоначчи.
+
+function fibonacci(n) {} // ? memo
+console.log(fibonacci(8)); // 21
+
+```
+
+```js
+function fibonacci(n, cache = {}) {
+  if (n in cache) {
+    return cache[n];
+  }
+
+  if (n <= 1) {
+    return n;
+  }
+
+  const result = fibonacci(n - 1, cache) + fibonacci(n - 2, cache);
+  cache[n] = result;
+  return result;
+}
+
+// Вариант 2 - цикл
+const fib = (n) => {
+  if (n <= 1) {
+    return n;
+  }
+
+  let prev = 0;
+  let curr = 1;
+
+  for (let i = 2; i <= n; i++){
+      const next = curr + prev;
+      prev = curr;
+      curr = next;
+  }
+
+  return curr;
+};
+```
+
+
+
+***
+
+</details>
+
+<details>
 <summary>flattenObject(obj) написать функцию</summary>
 
 ***
@@ -677,5 +732,36 @@ const flattenObject = (obj) => {
 
 </details>
 
+<details>
+<summary>flattenArray(arr) написать функцию</summary>
 
+***
+
+Развернуть вложенные массивы с помощью рекурсии.
+
+```
+const nestedArray = [1, [2, [3, 4], 5], 6];
+console.log(flattenArray(nestedArray)); // [1, 2, 3, 4, 5, 6]
+```
+
+```js
+function flattenArray(arr) {
+  const stack = [...arr];
+  const result = [];
+
+  while (stack.length) {
+    const element = stack.pop();
+    if (Array.isArray(element)) {
+      stack.push(...element);
+    } else {
+      result.unshift(element);
+    }
+  }
+
+  return result;
+}
+```
+***
+
+</details>
 
