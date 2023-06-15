@@ -737,8 +737,6 @@ const flattenObject = (obj) => {
 
 ***
 
-Развернуть вложенные массивы с помощью рекурсии.
-
 ```
 const nestedArray = [1, [2, [3, 4], 5], 6];
 console.log(flattenArray(nestedArray)); // [1, 2, 3, 4, 5, 6]
@@ -758,6 +756,20 @@ function flattenArray(arr) {
     }
   }
 
+  return result;
+}
+
+// Развернуть вложенные массивы с помощью рекурсии.
+function flattenArray(arr) {
+  let result = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    if (Array.isArray(arr[i])) {
+      result = result.concat(flattenArray(arr[i]));
+    } else {
+      result.push(arr[i]);
+    }
+  }
   return result;
 }
 ```
