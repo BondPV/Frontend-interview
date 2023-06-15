@@ -122,12 +122,14 @@ function throttle(func, ms) {
 </details>
 
 <details>
-<summary>Написать функцию sleep, которая останавливает выполнение кода на определенное время</summary>
+<summary>sleep</summary>
 
 ***
 
+[leetcode - 2621. Sleep](https://leetcode.com/problems/sleep/description/)  
+
 ```js
-function sleep(ms) {
+async function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
