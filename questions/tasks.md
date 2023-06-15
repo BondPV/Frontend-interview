@@ -122,6 +122,27 @@ function throttle(func, ms) {
 </details>
 
 <details>
+<summary>Написать функцию sleep, которая останавливает выполнение кода на определенное время</summary>
+
+***
+
+```js
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+const test = async () => {
+  console.log('Начало');
+  await sleep(2000); // Приостанавливаем выполнение на 2 секунды
+  console.log('Прошло 2 секунды');
+}
+```
+
+***
+
+</details>
+
+<details>
 <summary>Проверка пар скобок</summary>
 
 ***
@@ -804,6 +825,54 @@ function search(nums, target) {
   }
 
   return -1;
+}
+```
+***
+
+</details>
+
+<details>
+<summary>Методы map, filter, reduce</summary>
+
+***
+
+Реализовать собственные методы map, filter, reduce.  
+Необходимо сохранить все те возможности, что есть у нативных методов: обращение через точку, получение всех необходимых аргументов
+
+```js
+// Реализация метода map
+Array.prototype.myMap = function(callback) {
+  const result = [];
+
+  for (let i = 0; i < this.length; i++) {
+    result.push(callback(this[i], i, this));
+  }
+
+  return result;
+}
+
+// Реализация метода filter
+Array.prototype.myFilter = function(callback) {
+  const result = [];
+
+  for (let i = 0; i < this.length; i++) {
+    if (callback(this[i], i, this)) {
+      result.push(this[i]);
+    }
+  }
+
+  return result;
+}
+
+// Реализация метода reduce
+Array.prototype.myReduce = function(callback, initialValue) {
+  let accumulator = initialValue !== undefined ? initialValue : this[0];
+
+  for (let i = initialValue !== undefined ? 0 : 1; i < this.length; i++) {
+    accumulator = callback(accumulator, this[i], i, this);
+  }
+
+  return accumulator;
 }
 ```
 ***
