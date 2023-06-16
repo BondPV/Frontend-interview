@@ -49,6 +49,49 @@ try {
 </details>
 
 <details>
+<summary>PromiseAll</summary>
+
+***
+
+Реализация функционала Promise.all()  
+
+```js
+function promiseAll(promises) {
+  return new Promise((resolve, reject) => {
+    const results = [];
+    let resolvedCount = 0;
+
+    promises.forEach((promise, index) => {
+      promise
+        .then(result => {
+          results[index] = result;
+          resolvedCount++;
+          if (resolvedCount === promises.length) {
+            resolve(results);
+          }
+        })
+        .catch(error => {
+          reject(error);
+        });
+    });
+  });
+}
+
+// вариант 2
+function promiseAll(promises) {
+  return Promise.resolve(
+    promises.reduce((p,f) => {
+      return p.then(res => f.then(val => [...res,val])).catch(err => err);
+    }, Promise.resolve([]))
+  )
+}
+```
+
+***
+
+</details>
+
+<details>
 <summary>Реализация debounce</summary>
 
 ***
