@@ -618,7 +618,7 @@ function countVowelSubstrings(word) {
 
 ***
 
-```json
+```js
 // Объект на вход
 const object = {
   a: {
@@ -639,13 +639,11 @@ const object = {
 const addLevels = (obj) => {}
 
 // Данные на выход
-/*
 updatedObject {
   a: { d: { h: 4, level: 2 }, e: 2, level: 1 },
   b: 1,
   c: { f: { g: 3, k: [Object], level: 2 }, level: 1 },
-  level: 0
-}*/
+  level: 0 }
 ```
 
 ```js
