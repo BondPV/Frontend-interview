@@ -100,16 +100,20 @@ function promiseAll(promises) {
 
 ```js
 function debounce(func, delay) {
-  let isCooldown = false;
-
-  return function() {
-    if (isCooldown) return;
-
-    func.apply(this, arguments);
-    isCooldown = true;
-    setTimeout(() => isCooldown = false, delay);
+  let timer = null;
+  return function (...args) {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      func.apply(this, args);
+    }, delay);  
   };
 }
+
+const f = debounce(console.log, 100);
+f(1);
+f(2);
+setTimeout(() => f(3), 200);
+
 ```
 
 ***
@@ -124,39 +128,36 @@ function debounce(func, delay) {
 throttle() — это функция, которая вызывает другую функцию, «пропуская» некоторые вызовы с определённой периодичностью.  
 
 ```js
-function throttle(func, ms) {
-  let isThrottled = false,
-    savedArgs,
-    savedThis;
+function throttle(func, delay) {
+  let isWaiting = false;
+  let savedArgs = null;
+  let savedThis = null;
 
-  function wrapper() {
-    if (isThrottled) { // (2)
-      savedArgs = arguments;
+  return function wrapper(...args) {
+    if (isWaiting) {
+      savedArgs = args;
       savedThis = this;
       return;
     }
 
-    func.apply(this, arguments); // (1)
-
-    isThrottled = true;
-
-    setTimeout(function() {
-      isThrottled = false; // (3)
+    func.apply(this, args);
+    isWaiting = true;
+    setTimeout(() => {
+      isWaiting = false;
       if (savedArgs) {
         wrapper.apply(savedThis, savedArgs);
-        savedArgs = savedThis = null;
+        savedArgs = null;
+        savedThis = null;
       }
-    }, ms);
-  }
-
-  return wrapper;
+    }, delay);
+  };
 }
 
-// Вызов throttle(func, ms) возвращает wrapper.
+// Вызов throttle(func, delay) возвращает wrapper.
 
-// Во время первого вызова обёртка просто вызывает func и устанавливает состояние задержки (isThrottled = true).
+// Во время первого вызова обёртка просто вызывает func и устанавливает состояние задержки (isWaiting = true).
 // В этом состоянии все вызовы запоминаются в saveArgs / saveThis. Обратите внимание, что контекст и аргументы одинаково важны и должны быть запомнены. Они нам нужны для того, чтобы воспроизвести вызов позднее.
-// … Затем по прошествии ms миллисекунд срабатывает setTimeout. Состояние задержки сбрасывается (isThrottled = false). И если мы проигнорировали вызовы, то «обёртка» выполняется с последними запомненными аргументами и контекстом.
+// … Затем по прошествии delay миллисекунд срабатывает setTimeout. Состояние задержки сбрасывается (isWaiting = false). И если мы проигнорировали вызовы, то «обёртка» выполняется с последними запомненными аргументами и контекстом.
 // На третьем шаге выполняется не func, а wrapper, потому что нам нужно не только выполнить func, но и ещё раз установить состояние задержки и таймаут для его сброса.
 ```
 
