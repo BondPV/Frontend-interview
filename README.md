@@ -1,4 +1,6 @@
-# JS-interview
+# Frontend-interview
 
-### Темы вопросов:
-- [Задачи](./questions/tasks.md)
+### Содержание:
+- [Сеть и интернет](./network-internet/network-internet.md)
+
+- [Задачи по JS](tasks-js/tasks.md)
