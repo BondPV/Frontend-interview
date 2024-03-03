@@ -14,7 +14,7 @@ async function makeRequest(url, maxRetries, delay) {
     if (response.ok) {
       return response.json();
     } else {
-      throw new Error(Request failed with status ${response.status});
+      throw new Error(`Request failed with status ${response.status}`);
     }
   } catch (error) {
     if (maxRetries > 0) {
