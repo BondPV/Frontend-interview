@@ -30,8 +30,6 @@ async function makeRequest(url, maxRetries, delay) {
 // maxRetries - максимальное количество попыток выполнения запроса;
 // delay - задержка между попытками выполнения запроса (в миллисекундах).
 
-Вот пример использования этой функции:
-
 const url = 'https://example.com/data';
 const maxRetries = 3;
 const delay = 1000;
